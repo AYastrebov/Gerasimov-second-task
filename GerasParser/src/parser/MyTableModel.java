@@ -11,11 +11,11 @@ public class MyTableModel extends AbstractTableModel
 	 */
 	private static final long serialVersionUID = 8551310900044082864L;
 	private Vector<TableItem> tableItems;
-	private final String[] columnNames = {"#", "Строка", "Совпадения"};
+	private final String[] columnNames = {"#", "Строка", "Совпадения", "Вероятность"};
 	
 	public MyTableModel(Vector<TableItem> tableItems) 
 	{
-		this.setTableItems(tableItems);
+		setTableItems(tableItems);
 	}
 
 	@Override
@@ -49,11 +49,27 @@ public class MyTableModel extends AbstractTableModel
 			return item.getName();			
 		case 2:
 			return item.getDuplicates();
+		case 3:
+			return getProbability(item);
 		default:
 			break;
 		}
 		return "error!";
 		
+	}
+
+	private double getProbability(TableItem item) 
+	{
+		double probability = 0;
+		int duplicatesSum = 0;
+		for (TableItem tItem : tableItems) 
+		{
+			duplicatesSum = duplicatesSum + tItem.getDuplicates();
+		}
+		
+		probability = (double) item.getDuplicates() / duplicatesSum;
+		
+		return probability;
 	}
 
 	public Vector<TableItem> getTableItems() 

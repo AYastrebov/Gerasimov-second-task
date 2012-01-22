@@ -10,6 +10,7 @@ import javax.swing.JTable;
 public class TableManager 
 {
 	private MyTableModel tableModel = null;
+	private JTable table = null;
 	private volatile static TableManager instance;
 
 	/** Returns singletone class instance */
@@ -23,12 +24,10 @@ public class TableManager
 		}
 		return instance;
 	}
-	
-	private JTable table;
-	
+		
 	private TableManager()
 	{
-		
+		this.table = new JTable();
 	}
 	
 	public void setTableData(Vector<String> data)
@@ -61,15 +60,9 @@ public class TableManager
 	{		
 		return Collections.frequency(data, key);
 	}
-
-	public boolean hasTable() 
-	{
-		return (this.table != null);
-	}
 	
-	public void setTable(JTable table)
+	public JTable getTable()
 	{
-		this.table = table;
+		return table;
 	}
-	
 }

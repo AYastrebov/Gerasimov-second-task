@@ -15,8 +15,6 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
-
 
 public class Gui extends JFrame implements ActionListener, WindowListener
 {
@@ -24,7 +22,6 @@ public class Gui extends JFrame implements ActionListener, WindowListener
 	 * 
 	 */
 	private static final long serialVersionUID = 1370235564110989246L;
-	private JTable table = null;
 	private TableManager tableManager = null;
 	private JFileChooser fc = new JFileChooser();
 	private static final String OPEN_MENU = "Открыть";
@@ -33,15 +30,12 @@ public class Gui extends JFrame implements ActionListener, WindowListener
 	public Gui(String title)
 	{	
 		super(title);
-		
-		this.table = new JTable();
-		
+				
 		tableManager = TableManager.getInstance();
-		tableManager.setTable(table);
 		
 		this.fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		
-		this.add(new JScrollPane(table), BorderLayout.CENTER);
+		this.add(new JScrollPane(tableManager.getTable()), BorderLayout.CENTER);
 			
 		MenuBar menuBar = new MenuBar();
 		this.setMenuBar(menuBar);
