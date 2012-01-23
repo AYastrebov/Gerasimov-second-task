@@ -30,6 +30,23 @@ public class TableManager
 		this.table = new JTable();
 	}
 	
+	private int getDuplicates(Vector<String> data, String key) 
+	{		
+		return Collections.frequency(data, key);
+	}
+	
+	private Vector<TableItem> getRidOfDuplicateElements(Vector<TableItem> tableData) 
+	{
+		Vector<TableItem> noDuplicates = new Vector<TableItem>();
+
+		SortedSet<TableItem> mySet = new TreeSet<TableItem>(new TableItemComparator());
+		mySet.addAll(tableData);
+		
+		noDuplicates.addAll(mySet);
+		
+		return noDuplicates;
+	}
+	
 	public void setTableData(Vector<String> data)
 	{
 		Vector<TableItem> tableData = new Vector<TableItem>();
@@ -43,24 +60,7 @@ public class TableManager
 		this.tableModel = new MyTableModel(tableData);
 		this.table.setModel(tableModel);
 	}
-	
-	private Vector<TableItem> getRidOfDuplicateElements(Vector<TableItem> tableData) 
-	{
-		Vector<TableItem> noDuplicates = new Vector<TableItem>();
-
-		SortedSet<TableItem> mySet = new TreeSet<TableItem>(new TableItemCompare());
-		mySet.addAll(tableData);
-		
-		noDuplicates.addAll(mySet);
-		
-		return noDuplicates;
-	}
-
-	private int getDuplicates(Vector<String> data, String key) 
-	{		
-		return Collections.frequency(data, key);
-	}
-	
+			
 	public JTable getTable()
 	{
 		return table;

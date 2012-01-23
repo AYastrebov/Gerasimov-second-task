@@ -13,9 +13,23 @@ public class MyTableModel extends AbstractTableModel
 	private Vector<TableItem> tableItems;
 	private final String[] columnNames = {"#", "Строка", "Совпадения", "Вероятность"};
 	
+	private double getProbability(TableItem item) 
+	{
+		double probability = 0;
+		int duplicatesSum = 0;
+		for (TableItem tItem : tableItems) 
+		{
+			duplicatesSum = duplicatesSum + tItem.getDuplicates();
+		}
+		
+		probability = (double) item.getDuplicates() / duplicatesSum;
+		
+		return probability;
+	}
+	
 	public MyTableModel(Vector<TableItem> tableItems) 
 	{
-		setTableItems(tableItems);
+		this.setTableItems(tableItems);
 	}
 
 	@Override
@@ -56,21 +70,7 @@ public class MyTableModel extends AbstractTableModel
 		}
 		return "error!";
 		
-	}
-
-	private double getProbability(TableItem item) 
-	{
-		double probability = 0;
-		int duplicatesSum = 0;
-		for (TableItem tItem : tableItems) 
-		{
-			duplicatesSum = duplicatesSum + tItem.getDuplicates();
-		}
-		
-		probability = (double) item.getDuplicates() / duplicatesSum;
-		
-		return probability;
-	}
+	}	
 
 	public Vector<TableItem> getTableItems() 
 	{

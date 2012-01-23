@@ -9,6 +9,11 @@ import java.util.Vector;
 
 public class MyFileReader 
 {
+	private static String removeExtraSpaces(String s) 
+	{
+		return s.replaceAll("\\s+", " ");
+	}
+	
 	public static Vector<String> getFileContent(File file)
 	{
 		Vector<String> content = new Vector<String>();
@@ -70,9 +75,5 @@ public class MyFileReader
 		
 		return words;
 	}
-	
-	private static String removeExtraSpaces(String s) 
-	{
-		return s.replaceAll("\\s+", " ");
-	}
+		
 }

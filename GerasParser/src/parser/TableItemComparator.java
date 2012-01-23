@@ -2,7 +2,7 @@ package parser;
 import java.util.Comparator;
 
 
-public class TableItemCompare implements Comparator<TableItem>
+public class TableItemComparator implements Comparator<TableItem>
 {
 
 	@Override
