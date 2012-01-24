@@ -61,7 +61,7 @@ public class MyFileReader
 		for (String string : fileContent) 
 		{
 			builder.append(string);
-			builder.append(System.getProperty("line.separator"));
+			builder.append("\n");//(System.getProperty("line.separator"));
 		}
 		
 		return builder.toString();

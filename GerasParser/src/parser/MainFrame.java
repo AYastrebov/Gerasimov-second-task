@@ -63,6 +63,7 @@ public class MainFrame extends JFrame implements ActionListener, WindowListener
 		menuOpen.addActionListener(this);
 		
 		menuExceptions.addActionListener(this);
+		menuPreview.addActionListener(this);
 	
 			
 		this.setSize(600,600);
@@ -146,7 +147,7 @@ public class MainFrame extends JFrame implements ActionListener, WindowListener
 		}
 		else if (actionComand.equals(PREVIEW_MENU))
 		{
-			
+			new PreviewFrame();
 		}
 		
 	}

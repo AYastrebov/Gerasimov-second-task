@@ -20,6 +20,14 @@ public class PreviewFrame extends JFrame implements WindowListener
 		super(DataManager.getInstance().getFileName());
 		
 		this.add(new JScrollPane(new JLabel(DataManager.getInstance().getStringRepresentation())), BorderLayout.CENTER);
+		
+		this.setSize(600,600);
+		
+		this.setLocation(250, 150);
+			
+		this.setVisible(true);
+			
+		this.addWindowListener(this);
 	}
 
 	@Override
