@@ -16,7 +16,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
-public class Gui extends JFrame implements ActionListener, WindowListener
+public class MainFrame extends JFrame implements ActionListener, WindowListener
 {
 	/**
 	 * 
@@ -30,11 +30,9 @@ public class Gui extends JFrame implements ActionListener, WindowListener
 	private static final String EXCEPTIONS_MENU = "Исключения";
 	private static final String PREVIEW_MENU = "Источник";
 	
-	public Gui(String title)
+	public MainFrame(String title)
 	{	
 		super(title);
-				
-		//tableManager = TableManager.getInstance();
 		
 		this.fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		
@@ -124,7 +122,7 @@ public class Gui extends JFrame implements ActionListener, WindowListener
 		String actionComand = arg0.getActionCommand();
 		if (actionComand.equals(OPEN_MENU)) 
 		{
-			int returnVal = fc.showOpenDialog(Gui.this);
+			int returnVal = fc.showOpenDialog(MainFrame.this);
 			
 			if (returnVal == JFileChooser.APPROVE_OPTION) 
 			{

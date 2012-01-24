@@ -6,6 +6,7 @@ import java.util.Vector;
 public class DataManager 
 {
 	private String stringRepresentation = null;
+	private String fileName = null;
 	private Vector<String> fileContent = null;
 	private Vector<String> formatedWords = null;
 	private Vector<String> standAloneWords = null;
@@ -34,10 +35,16 @@ public class DataManager
 		this.stringRepresentation = MyFileReader.getFileStringRepresentation(fileContent);
 		this.standAloneWords = MyFileReader.getStandAloneWords(fileContent);
 		this.formatedWords = MyFileReader.getFormatedWords(standAloneWords);
-		
+		this.fileName = file.getName();
+						
 		TableManager.getInstance().setTableData(formatedWords);
 	}
 	
+	public String getFileName() 
+	{
+		return fileName;
+	}
+
 	public Vector<String> getStandAloneWords() 
 	{
 		return standAloneWords;
