@@ -54,6 +54,44 @@ public class MyFileReader
 		return content;
 	}
 	
+	public static String getFileStringRepresentation(Vector<String> fileContent)
+	{
+		StringBuilder builder = new StringBuilder();
+		
+		for (String string : fileContent) 
+		{
+			builder.append(string);
+			builder.append(System.getProperty("line.separator"));
+		}
+		
+		return builder.toString();
+	}
+	
+	public static String getFileStringRepresentation(File file)
+	{
+		return getFileStringRepresentation(getFileContent(file));
+	}
+	
+	public static Vector<String> getFormatedWords(File file)
+	{
+		return getFormatedWords(getStandAloneWords(getFileContent(file)));
+	}
+	
+	public static Vector<String> getFormatedWords(Vector<String> standAloneWords)
+	{				
+		Vector<String> words = new Vector<String>();
+		
+		for (String word : standAloneWords) 
+		{
+			if (!DataManager.isSpecialSymbol(word)) 
+			{
+				words.add(word.toLowerCase());
+			}
+		}
+		
+		return words;
+	}
+	
 	public static Vector<String> getStandAloneWords(File file)
 	{
 		return getStandAloneWords(getFileContent(file));

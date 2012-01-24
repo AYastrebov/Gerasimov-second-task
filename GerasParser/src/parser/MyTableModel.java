@@ -1,4 +1,5 @@
 package parser;
+import java.text.DecimalFormat;
 import java.util.Vector;
 
 import javax.swing.table.AbstractTableModel;
@@ -12,8 +13,9 @@ public class MyTableModel extends AbstractTableModel
 	private static final long serialVersionUID = 8551310900044082864L;
 	private Vector<TableItem> tableItems;
 	private final String[] columnNames = {"#", "Строка", "Совпадения", "Вероятность"};
+	private final DecimalFormat df = new DecimalFormat("#.####");
 	
-	private double getProbability(TableItem item) 
+	private String getProbability(TableItem item) 
 	{
 		double probability = 0;
 		int duplicatesSum = 0;
@@ -24,7 +26,7 @@ public class MyTableModel extends AbstractTableModel
 		
 		probability = (double) item.getDuplicates() / duplicatesSum;
 		
-		return probability;
+		return df.format(probability);
 	}
 	
 	public MyTableModel(Vector<TableItem> tableItems) 
