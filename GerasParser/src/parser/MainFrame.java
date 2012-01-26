@@ -8,15 +8,13 @@ import java.awt.MenuShortcut;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.io.File;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
-public class MainFrame extends JFrame implements ActionListener, WindowListener
+public class MainFrame extends JFrame implements ActionListener
 {
 	/**
 	 * 
@@ -72,50 +70,9 @@ public class MainFrame extends JFrame implements ActionListener, WindowListener
 			
 		this.setVisible(true);
 			
-		this.addWindowListener(this);		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
 	}
 
-	@Override
-	public void windowActivated(WindowEvent arg0)
-	{
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void windowClosed(WindowEvent arg0) 
-	{
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void windowClosing(WindowEvent arg0) 
-	{
-		System.exit(0);
-	}
-
-	@Override
-	public void windowDeactivated(WindowEvent arg0) 
-	{
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void windowDeiconified(WindowEvent arg0) 
-	{
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void windowIconified(WindowEvent arg0) 
-	{
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void windowOpened(WindowEvent arg0) 
-	{
-		// TODO Auto-generated method stub
-	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) 
@@ -143,11 +100,11 @@ public class MainFrame extends JFrame implements ActionListener, WindowListener
 		} 
 		else if (actionComand.equals(EXCEPTIONS_MENU))
 		{
-			
+			new SymbolsPreview();
 		}
 		else if (actionComand.equals(PREVIEW_MENU))
 		{
-			new PreviewFrame();
+			new SourcePreview();
 		}
 		
 	}

@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Vector;
+import java.util.regex.PatternSyntaxException;
 
 
 public class MyFileReader 
@@ -61,7 +62,7 @@ public class MyFileReader
 		for (String string : fileContent) 
 		{
 			builder.append(string);
-			builder.append("\n");//(System.getProperty("line.separator"));
+			builder.append(System.getProperty("line.separator"));
 		}
 		
 		return builder.toString();
@@ -89,9 +90,38 @@ public class MyFileReader
 			}
 		}
 		
-		return words;
+		return removeSpecialSymbolsInWords(words);
 	}
 	
+	private static Vector<String> removeSpecialSymbolsInWords(
+			Vector<String> input) 
+			{
+		
+		Vector<String> words = new Vector<String>(input.size());
+		
+		for (String word : input) 
+		{
+			for (String symbol : DataManager.getSpecial()) 
+			{
+				if (word.contains(symbol)); 
+				{
+					try 
+					{
+						word = word.replace(symbol, "");
+					} 
+					catch (PatternSyntaxException e) 
+					{
+						word = word.replace("\\" + symbol, "");
+					}
+				}
+				
+			}
+			words.add(word);
+		}
+		
+		return words;
+	}
+
 	public static Vector<String> getStandAloneWords(File file)
 	{
 		return getStandAloneWords(getFileContent(file));

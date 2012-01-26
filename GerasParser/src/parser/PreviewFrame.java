@@ -1,74 +1,38 @@
 package parser;
 
 import java.awt.BorderLayout;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
-public class PreviewFrame extends JFrame implements WindowListener
+public class PreviewFrame extends JFrame
 {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 3186494520298809478L;
+	private JTextArea textArea = new JTextArea();
 
-	public PreviewFrame() 
+	public PreviewFrame(String title, String textAreaText) 
 	{
-		super(DataManager.getInstance().getFileName());
+		super(title);
 		
-		this.add(new JScrollPane(new JLabel(DataManager.getInstance().getStringRepresentation())), BorderLayout.CENTER);
+		this.add(new JScrollPane(textArea), BorderLayout.CENTER);
+		textArea.setText(textAreaText);
 		
 		this.setSize(600,600);
 		
 		this.setLocation(250, 150);
 			
 		this.setVisible(true);
-			
-		this.addWindowListener(this);
-	}
-
-	@Override
-	public void windowActivated(WindowEvent arg0) {
-		// TODO Auto-generated method stub
 		
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 
-	@Override
-	public void windowClosing(WindowEvent arg0) 
+	public void updateFrame(String title, String textAreaText)
 	{
-		System.exit(0);
-	}
-
-	@Override
-	public void windowDeactivated(WindowEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void windowDeiconified(WindowEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void windowIconified(WindowEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void windowOpened(WindowEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void windowClosed(WindowEvent e) {
-		// TODO Auto-generated method stub
-		
+		this.setTitle(title);
+		textArea.setText(textAreaText);
 	}
 }
