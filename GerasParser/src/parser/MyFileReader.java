@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 import java.util.Vector;
 import java.util.regex.PatternSyntaxException;
 
@@ -90,9 +91,26 @@ public class MyFileReader
 			}
 		}
 		
-		return removeSpecialSymbolsInWords(words);
+		words = removeSpecialSymbolsInWords(words);
+		words = getInfinitiWordValues(words);
+		
+		return words;//removeSpecialSymbolsInWords(words);
 	}
 	
+	private static Vector<String> getInfinitiWordValues(Vector<String> words) 
+	{
+		Vector<String> result = new Vector<String>(words.size());
+		MorphAnalyzer mAnalyzer = MorphAnalyzer.getInstance();
+		
+		for (String word : words) 
+		{
+			List<String> wordForms = mAnalyzer.getWordBaseForms(word);
+			result.add(wordForms.get(0));
+		}
+		
+		return result;
+	}
+
 	private static Vector<String> removeSpecialSymbolsInWords(
 			Vector<String> input) 
 			{
