@@ -94,7 +94,7 @@ public class MyFileReader
 		words = removeSpecialSymbolsInWords(words);
 		words = getInfinitiWordValues(words);
 		
-		return words;//removeSpecialSymbolsInWords(words);
+		return words;
 	}
 	
 	private static Vector<String> getInfinitiWordValues(Vector<String> words) 
@@ -134,7 +134,11 @@ public class MyFileReader
 				}
 				
 			}
-			words.add(word);
+			if (word.length() > 0) 
+			{
+				words.add(word);
+			}
+			
 		}
 		
 		return words;
