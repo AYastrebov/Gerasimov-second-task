@@ -136,7 +136,10 @@ public class DataManager
 			"]",
 			"(",
 			")",
-			";"
+			";",
+			":",
+			"/",
+			"\\"
 		};
 
 	public static String[] getSpecial() 
