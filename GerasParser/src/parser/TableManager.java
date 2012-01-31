@@ -30,11 +30,13 @@ public class TableManager
 		this.table = new JTable();
 	}
 	
+	//Считаем количество дубликатов
 	private int getDuplicates(Vector<String> data, String key) 
 	{		
 		return Collections.frequency(data, key);
 	}
 	
+	//Избавляемся от дубликатов
 	private Vector<TableItem> getRidOfDuplicateElements(Vector<TableItem> tableData) 
 	{
 		Vector<TableItem> noDuplicates = new Vector<TableItem>();
@@ -47,6 +49,7 @@ public class TableManager
 		return noDuplicates;
 	}
 	
+	//Задаем данные для таблицы
 	public void setTableData(Vector<String> data)
 	{
 		Vector<TableItem> tableData = new Vector<TableItem>();

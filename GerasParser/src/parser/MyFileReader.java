@@ -11,11 +11,13 @@ import java.util.regex.PatternSyntaxException;
 
 public class MyFileReader 
 {
+	//Убираем лишние пробелы
 	private static String removeExtraSpaces(String s) 
 	{
 		return s.replaceAll("\\s+", " ");
 	}
 	
+	//Получаем содержание файла
 	public static Vector<String> getFileContent(File file)
 	{
 		Vector<String> content = new Vector<String>();
@@ -56,6 +58,7 @@ public class MyFileReader
 		return content;
 	}
 	
+	//Весь файл в виде строки
 	public static String getFileStringRepresentation(Vector<String> fileContent)
 	{
 		StringBuilder builder = new StringBuilder();
@@ -74,6 +77,7 @@ public class MyFileReader
 		return getFileStringRepresentation(getFileContent(file));
 	}
 	
+	//Получаем отформатированные слова
 	public static Vector<String> getFormatedWords(File file)
 	{
 		return getFormatedWords(getStandAloneWords(getFileContent(file)));
@@ -97,6 +101,7 @@ public class MyFileReader
 		return words;
 	}
 	
+	//Приводим слова к начальной форме
 	private static Vector<String> getInfinitiWordValues(Vector<String> words) 
 	{
 		Vector<String> result = new Vector<String>(words.size());
@@ -111,6 +116,7 @@ public class MyFileReader
 		return result;
 	}
 
+	//Убираем из слов исключаемые символы
 	private static Vector<String> removeSpecialSymbolsInWords(
 			Vector<String> input) 
 			{
@@ -144,6 +150,7 @@ public class MyFileReader
 		return words;
 	}
 
+	//Получаем набор слов
 	public static Vector<String> getStandAloneWords(File file)
 	{
 		return getStandAloneWords(getFileContent(file));

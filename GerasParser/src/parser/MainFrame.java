@@ -36,6 +36,7 @@ public class MainFrame extends JFrame implements ActionListener
 		
 		this.add(new JScrollPane(TableManager.getInstance().getTable()), BorderLayout.CENTER);
 			
+		//Создаем меню
 		MenuBar menuBar = new MenuBar();
 		this.setMenuBar(menuBar);
 		
@@ -84,8 +85,10 @@ public class MainFrame extends JFrame implements ActionListener
 			
 			if (returnVal == JFileChooser.APPROVE_OPTION) 
 			{
+				//Открываем файл
                 File file = fc.getSelectedFile();
                 System.out.println("Opening: " + file.getName());
+                //Заполням DataManager информацией
                 DataManager.getInstance().fillWithData(file);
                 menuOptions.setEnabled(true);
             } 
@@ -100,10 +103,12 @@ public class MainFrame extends JFrame implements ActionListener
 		} 
 		else if (actionComand.equals(EXCEPTIONS_MENU))
 		{
+			//Предпросмотр исключаемых символов
 			new SymbolsPreview();
 		}
 		else if (actionComand.equals(PREVIEW_MENU))
 		{
+			//Предпросмотр исходного файла
 			new SourcePreview();
 		}
 		

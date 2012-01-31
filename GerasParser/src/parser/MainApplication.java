@@ -7,6 +7,7 @@ public class MainApplication
 	 */
 	public static void main(String[] args) 
 	{
+		//Создаем окно
 		new MainFrame("Парсер");
 	}
 

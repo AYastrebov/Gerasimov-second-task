@@ -37,6 +37,7 @@ public class MorphAnalyzer
 		}
 	}
 	
+	//Возвращает начальные формы слова, если они есть
 	public List<String> getWordBaseForms(String word)
 	{		
 		
@@ -70,6 +71,7 @@ public class MorphAnalyzer
 		return result;
 	}
 	
+	//Избавляемся от ненужных символов
 	private String remove_ARABIC_PRESENTATION_FORMS(String string)
 	{
 		try 
@@ -90,11 +92,13 @@ public class MorphAnalyzer
 		return string;
 	}
 	
+	//Проверка буквы на кирилицу
 	private boolean isCyrillic(char c) 
 	{
 		return Character.UnicodeBlock.CYRILLIC.equals(Character.UnicodeBlock.of(c));
 	}
 	
+	//Проверка слова ни кирилицу
 	private boolean isStringCyrilic(String string)
 	{
 		for (int i = 0; i < string.length(); i++) 

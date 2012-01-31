@@ -30,6 +30,7 @@ public class PreviewFrame extends JFrame
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 
+	//Обновляем фрейм
 	public void updateFrame(String title, String textAreaText)
 	{
 		this.setTitle(title);

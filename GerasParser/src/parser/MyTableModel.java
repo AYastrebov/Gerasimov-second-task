@@ -15,6 +15,7 @@ public class MyTableModel extends AbstractTableModel
 	private final String[] columnNames = {"#", "Строка", "Совпадения", "Вероятность"};
 	private final DecimalFormat df = new DecimalFormat("#.####");
 	
+	//Считаем вероятность
 	private String getProbability(TableItem item) 
 	{
 		double probability = 0;
