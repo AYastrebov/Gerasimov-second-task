@@ -89,7 +89,10 @@ public class DataManager
 		"НАД",
 		"ЗА",
 		"МЕЖДУ",
-		"ЧЕРЕЗ"		
+		"ЧЕРЕЗ",		
+		"П",
+		"Н",
+		"О"
 		};
 	
 	private final static String[] particles = 
@@ -116,12 +119,15 @@ public class DataManager
 		"ПОЧТИ",
 		"УЖЕ",
 		"ВОН",
-		"ВОТ"		
+		"ВОТ",
+		"И",
+		"А"
 		};
 	
 	private final static String[] special =
 		{
 			"-",
+			"—",
 			"+",
 			"=",
 			",",
@@ -139,7 +145,10 @@ public class DataManager
 			";",
 			":",
 			"/",
-			"\\"
+			"\\",
+			"?",
+			"«",
+			"»"
 		};
 
 	public static String[] getSpecial() 

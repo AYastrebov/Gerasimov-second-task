@@ -46,6 +46,11 @@ public class TableManager
 		
 		noDuplicates.addAll(mySet);
 		
+		for (TableItem tableItem : noDuplicates) 
+		{
+			System.out.println("Word: " + tableItem.getName() + " at position: " + noDuplicates.indexOf(tableItem));
+		}
+		
 		return noDuplicates;
 	}
 	
@@ -56,6 +61,7 @@ public class TableManager
 		
 		for (String stringItem : data) 
 		{
+			//System.out.println("Word: " + stringItem + " at position: " + data.indexOf(stringItem));
 			TableItem tItem = new TableItem(stringItem, getDuplicates(data, stringItem));
 			tableData.add(tItem);
 		}

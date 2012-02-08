@@ -166,6 +166,10 @@ public class MyFileReader
 			
 			for (String result : results) 
 			{
+				if (result.contains(" ")) 
+				{
+					result = result.replace(" ", "");
+				}
 				words.add(result);
 			}
 		}
