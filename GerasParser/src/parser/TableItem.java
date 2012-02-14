@@ -1,6 +1,6 @@
 package parser;
 
-public class TableItem 
+public class TableItem  implements Comparable<TableItem>
 {
 	private String name;
 	private int duplicates;
@@ -36,5 +36,25 @@ public class TableItem
 	public void setDuplicates(int duplicates) 
 	{
 		this.duplicates = duplicates;
+	}
+
+	@Override
+	public int compareTo(TableItem o) 
+	{
+		// TODO Auto-generated method stub
+		
+		
+		
+		if (getName().equals(o.getName())) 
+		{
+			return 0;
+		}
+		
+		if (this.getDuplicates() < o.getDuplicates()) 
+		{
+			return 1;
+		}
+		
+		return -1;
 	}
 }

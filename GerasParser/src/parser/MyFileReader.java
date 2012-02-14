@@ -109,18 +109,24 @@ public class MyFileReader
 		
 		for (String word : words) 
 		{
-			List<String> wordForms = mAnalyzer.getWordBaseForms(word);
-			result.add(wordForms.get(0));
+			if (word.length() < 2) 
+			{
+				result.add(word);
+			} 
+			else 
+			{
+				List<String> wordForms = mAnalyzer.getWordBaseForms(word);
+				result.add(wordForms.get(0));
+			}
+			
 		}
 		
 		return result;
 	}
 
 	//Убираем из слов исключаемые символы
-	private static Vector<String> removeSpecialSymbolsInWords(
-			Vector<String> input) 
-			{
-		
+	private static Vector<String> removeSpecialSymbolsInWords(Vector<String> input) 
+	{	
 		Vector<String> words = new Vector<String>(input.size());
 		
 		for (String word : input) 

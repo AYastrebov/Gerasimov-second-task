@@ -46,12 +46,32 @@ public class TableManager
 		
 		noDuplicates.addAll(mySet);
 		
+		Vector<TableItem> result = new Vector<TableItem>();
+		
 		for (TableItem tableItem : noDuplicates) 
 		{
-			System.out.println("Word: " + tableItem.getName() + " at position: " + noDuplicates.indexOf(tableItem));
+			int[] positions = new int[tableItem.getDuplicates()];
+			int iterator = 0;
+			for (int i = 0; i < noDuplicates.size(); i++) 
+			{
+				if (tableItem.equals(noDuplicates.get(i))) 
+				{
+					positions[iterator] = i;
+					iterator++;
+				}
+			}
+			iterator = 0;
+			
+			TableItem targetItem = noDuplicates.get(positions[0]);
+			
+			if (!result.contains(targetItem))
+			{
+				result.add(targetItem);
+			} 
+			
 		}
 		
-		return noDuplicates;
+		return result;
 	}
 	
 	//Задаем данные для таблицы
@@ -61,7 +81,6 @@ public class TableManager
 		
 		for (String stringItem : data) 
 		{
-			//System.out.println("Word: " + stringItem + " at position: " + data.indexOf(stringItem));
 			TableItem tItem = new TableItem(stringItem, getDuplicates(data, stringItem));
 			tableData.add(tItem);
 		}
